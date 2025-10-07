@@ -35,7 +35,7 @@ class IqBarrioService {
    * @param string $pathDefinitionSource
    *   The definition base file.
    */
-  public function writeDefinitionsFile(array $stylingValues, string $pathDefinitionTarget, string $pathDefinitionSource = NULL) {
+  public function writeDefinitionsFile(array $stylingValues, string $pathDefinitionTarget, ?string $pathDefinitionSource = NULL) {
 
     $definitionSource = "";
 
