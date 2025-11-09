@@ -13,7 +13,8 @@ use Drush\Commands\DrushCommands;
 /**
  * Sass Drush commands.
  */
-class SassCommands extends DrushCommands {
+class SassCommands extends DrushCommands
+{
 
   /**
    * Constructs a new SassCommands object.
@@ -48,7 +49,8 @@ class SassCommands extends DrushCommands {
    *
    * @usage drush iq_barrio_helper:sass-watch --folders=themes,modules
    */
-  public function watch($options = ['folders' => 'themes', 'ttl' => 60]) {
+  public function watch($options = ['folders' => 'themes', 'ttl' => 60])
+  {
     $this->sassCommands->watch($options);
   }
 
@@ -62,7 +64,8 @@ class SassCommands extends DrushCommands {
    *
    * @usage drush iq_barrio_helper:sass-interpolate-config
    */
-  public function interpolateConfig() {
+  public function interpolateConfig()
+  {
     $this->iqBarrioService->interpolateConfig();
   }
 
@@ -84,17 +87,4 @@ class SassCommands extends DrushCommands {
   ) {
     $this->sassCommands->compile($options);
   }
-
-  /**
-   * Run SASS compilations after deploy.
-   *
-   * @hook post-command deploy:hook
-   */
-  public function deploy($result, CommandData $commandData) {
-    $this->interpolateConfig();
-    $this->compile();
-    $this->cacheTagsInvalidator->invalidateTags(['rendered']);
-    $this->themeRegistry->reset();
-  }
-
 }
